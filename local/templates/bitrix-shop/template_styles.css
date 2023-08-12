@@ -1,5 +1,13 @@
-.m {
-  margin: 0;
+:root {
+  -c1: #333;
+  -c2: #fcfbf8;
+}
+
+body {
+  font-family: "Roboto";
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--c1);
 }
 
 /*# sourceMappingURL=template_styles.css.map */
