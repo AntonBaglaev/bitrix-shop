@@ -47,73 +47,104 @@ $CurUri = $APPLICATION->GetCurUri();
 <div class="top_header">
     <div class="container">
         <div class="top_header_content">
-            <button type="" class="top_header_content_menu">
-                <i class="fa fa-bars"></i>
-                <span>
-                    <img src="<?=SITE_TEMPLATE_PATH?>/img/logo_header_new.svg" alt="Bxstore">
-                </span>
-            </button>
+
             <?// Меню - http://dev.1c-bitrix.ru/user_help/settings/settings/components_2/navigation/menu.php
-            $APPLICATION->IncludeComponent(
-	"bitrix:menu", 
-	"horizontal_multilevel", 
-	array(
-		"ROOT_MENU_TYPE" => "top_catalog",
-		"MENU_CACHE_TYPE" => "A",
-		"MENU_CACHE_TIME" => "3600",
-		"MENU_CACHE_USE_GROUPS" => "Y",
-		"MENU_CACHE_GET_VARS" => array(
+            $APPLICATION->IncludeComponent("bitrix:menu", "top_header_aside_menu", Array(
+                "ROOT_MENU_TYPE" => "main",	// Тип меню для первого уровня
+                    "MENU_CACHE_TYPE" => "A",	// Тип кеширования
+                    "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+                    "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
+                    "MENU_CACHE_GET_VARS" => "",	// Значимые переменные запроса
+                    "MAX_LEVEL" => "2",	// Уровень вложенности меню
+                    "CHILD_MENU_TYPE" => "top_catalog",	// Тип меню для остальных уровней
+                    "USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+                    "DELAY" => "N",	// Откладывать выполнение шаблона меню
+                    "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+                    "COMPONENT_TEMPLATE" => "top_header_catalog_nav"
+                ),
+                false
+            ); ?>
+
+
+            <?// Меню - http://dev.1c-bitrix.ru/user_help/settings/settings/components_2/navigation/menu.php
+            $APPLICATION->IncludeComponent("bitrix:menu", "top_header_catalog_nav", Array(
+                    "ROOT_MENU_TYPE" => "top_catalog",	// Тип меню для первого уровня
+                    "MENU_CACHE_TYPE" => "A",	// Тип кеширования
+                    "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+                    "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
+                    "MENU_CACHE_GET_VARS" => "",	// Значимые переменные запроса
+                    "MAX_LEVEL" => "2",	// Уровень вложенности меню
+                    "CHILD_MENU_TYPE" => "top_catalog",	// Тип меню для остальных уровней
+                    "USE_EXT" => "Y",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+                    "DELAY" => "N",	// Откладывать выполнение шаблона меню
+                    "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+                    "COMPONENT_TEMPLATE" => "horizontal_multilevel"
+                ),
+                false
+            ); ?>
+            <?// Поиск по заголовкам - http://dev.1c-bitrix.ru/user_help/settings/search/components_2/search_title.php
+            $APPLICATION->IncludeComponent("bitrix:search.title", "top_header_search", Array(
+	"NUM_CATEGORIES" => "1",	// Количество категорий поиска
+		"TOP_COUNT" => "5",	// Количество результатов в каждой категории
+		"ORDER" => "date",	// Сортировка результатов
+		"USE_LANGUAGE_GUESS" => "Y",	// Включить автоопределение раскладки клавиатуры
+		"CHECK_DATES" => "N",	// Искать только в активных по дате документах
+		"SHOW_OTHERS" => "N",	// Показывать категорию "прочее"
+		"PAGE" => "#SITE_DIR#search/index.php",	// Страница выдачи результатов поиска (доступен макрос #SITE_DIR#)
+		"CATEGORY_0_TITLE" => "",	// Название категории
+		"CATEGORY_0" => array(	// Ограничение области поиска
+			0 => "iblock_catalog",
 		),
-		"MAX_LEVEL" => "2",
-		"CHILD_MENU_TYPE" => "top_catalog",
-		"USE_EXT" => "Y",
-		"DELAY" => "N",
-		"ALLOW_MULTI_SELECT" => "N",
-		"COMPONENT_TEMPLATE" => "horizontal_multilevel"
+		"COMPONENT_TEMPLATE" => ".default",
+		"SHOW_INPUT" => "Y",	// Показывать форму ввода поискового запроса
+		"INPUT_ID" => "title-search-input",	// ID строки ввода поискового запроса
+		"CONTAINER_ID" => "title-search",	// ID контейнера, по ширине которого будут выводиться результаты
+		"CATEGORY_0_iblock_catalog" => array(	// Искать в информационных блоках типа "iblock_catalog"
+			0 => "15",
+		)
 	),
 	false
-); ?>
-            <?// Поиск по заголовкам - http://dev.1c-bitrix.ru/user_help/settings/search/components_2/search_title.php
-            $APPLICATION->IncludeComponent(
-            	"bitrix:search.title",
-            	".default",               // [mobile, .default, catalog, visual]
-            	array(
-            		// region Основные параметры
-            		"NUM_CATEGORIES"      =>  "1",                           // Количество категорий поиска
-            		"TOP_COUNT"           =>  "5",                           // Количество результатов в каждой категории
-            		"ORDER"               =>  "date",                        // Сортировка результатов : array ( 'date' => 'по дате', 'rank' => 'по релевантности', )
-            		"USE_LANGUAGE_GUESS"  =>  "Y",                           // Включить автоопределение раскладки клавиатуры
-            		"CHECK_DATES"         =>  "N",                           // Искать только в активных по дате документах
-            		"SHOW_OTHERS"         =>  "N",                           // Показывать категорию 'прочее'
-            		// endregion
-            		// region Шаблоны ссылок
-            		"PAGE"                =>  "#SITE_DIR#search/index.php",  // Страница выдачи результатов поиска (доступен макрос #SITE_DIR#)
-            		// endregion
-            		// region Категория #1
-            		"CATEGORY_0_TITLE"    =>  "",                            // Название категории
-            		"CATEGORY_0"          =>  array('all'),                  // Ограничение области поиска : array ( 'no' => 'Не ограничивать', 'main' => '[main] Статические файлы', 'forum' => '[forum] Форумы для поиска', 'iblock_catalog' => '[iblock_catalog] Каталоги', 'iblock_news' => '[iblock_news] Новости', 'iblock_offers' => '[iblock_offers] Торговые предложения', 'iblock_services' => '[iblock_services] Сервисы', 'iblock_references' => '[iblock_references] Справочники', 'blog' => '[blog] Блоги', 'microblog' => '[microblog] Микроблоги', 'socialnetwork' => '[socialnetwork] Социальная сеть (группы)', 'socialnetwork_user' => '[socialnetwork_user] Социальная сеть (пользователь)', )
-            		// endregion
-            	)
-            );?>
+);?>
             <div class="top_header_content_phone">
                 <a href="tel:89000000000" rel="nofollow">+7 900 000 00 00</a>
                 <button type="button" class="top_header_content_phone_button"></button>
             </div>
             <div class="top_header_content_user">
                 <a href="" class="top_header_content_user_auth">
-
+                    <i class="fa fa-user"></i>
                 </a>
                 <a href="" class="top_header_content_user_wishlist">
-
+                    <i class="fa fa-heart"></i>
                 </a>
-                <?// Малая корзина
+                <?
                 $APPLICATION->IncludeComponent(
-                	"bitrix:sale.basket.basket.small",
-                	".default",
-                	array(
-
-                	)
-                );?>
+	"bitrix:sale.basket.basket.line", 
+	"top_header_basket", 
+	array(
+		"COMPONENT_TEMPLATE" => "top_header_basket",
+		"PATH_TO_BASKET" => "/personal/cart/",
+		"PATH_TO_ORDER" => "/personal/order/make/",
+		"SHOW_NUM_PRODUCTS" => "Y",
+		"SHOW_TOTAL_PRICE" => "Y",
+		"SHOW_EMPTY_VALUES" => "Y",
+		"SHOW_PERSONAL_LINK" => "N",
+		"PATH_TO_PERSONAL" => SITE_DIR."personal/",
+		"SHOW_AUTHOR" => "N",
+		"PATH_TO_AUTHORIZE" => "",
+		"SHOW_REGISTRATION" => "N",
+		"PATH_TO_REGISTER" => "",
+		"PATH_TO_PROFILE" => SITE_DIR."personal/",
+		"SHOW_PRODUCTS" => "Y",
+		"SHOW_DELAY" => "N",
+		"SHOW_NOTAVAIL" => "N",
+		"SHOW_IMAGE" => "Y",
+		"SHOW_PRICE" => "Y",
+		"SHOW_SUMMARY" => "Y",
+		"POSITION_FIXED" => "N",
+		"HIDE_ON_BASKET_PAGES" => "N"
+	),
+	false
+);?>
             </div>
         </div>
     </div>

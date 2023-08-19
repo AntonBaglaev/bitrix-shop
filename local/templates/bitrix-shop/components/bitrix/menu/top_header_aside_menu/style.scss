@@ -1,0 +1,28 @@
+
+.top_header_content_menu {
+  border: none;
+  background: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  i {
+    width: 55px;
+    height: 55px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1c1c1c;
+  }
+  span {
+    padding-left: 18px;
+    img {
+      width: 100px;
+    }
+  }
+}
+
+.top_header_aside_menu_panel {
+  display: none;
+}

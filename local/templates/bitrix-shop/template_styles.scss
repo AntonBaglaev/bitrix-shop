@@ -1,6 +1,6 @@
 :root {
-  -c1: #333;
-  -c2: #fcfbf8;
+  --c1: #262a30;
+  --c2: #fcfbf8;
 
 }
 
@@ -9,4 +9,42 @@ body {
   font-size: 16px;
   line-height: 24px;
   color: var(--c1);
+}
+
+
+.top_header {
+  //position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: var(--c1);
+
+  &_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &_phone {
+      display: flex;
+
+      a {
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      button {
+        background: none;
+        color: #888888;
+        padding: 0;
+        border: none;
+      }
+    }
+    &_user {
+      display: flex;
+      a {
+        color: #ffffff;
+        text-decoration: none;
+        i {}
+      }
+    }
+  }
 }
