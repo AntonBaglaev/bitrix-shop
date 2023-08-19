@@ -11,6 +11,9 @@
 
 <?php if (!empty($arResult)):?>
 <div class="top_header_aside_menu_panel">
+    <button type="" class="top_header_content_menu">
+        <i class="fa fa-close"></i>
+    </button>
 <ul id="horizontal-multilevel-menu">
 
 <?php

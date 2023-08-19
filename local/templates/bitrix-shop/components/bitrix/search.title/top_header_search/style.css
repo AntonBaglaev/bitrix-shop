@@ -1,3 +1,6 @@
+.top_header_search {
+  flex: 1;
+}
 .top_header_search form {
   display: flex;
   position: relative;
@@ -12,7 +15,6 @@
   justify-content: center;
   border: none;
   border-radius: 30px;
-  position: absolute;
   left: 0;
   z-index: 10;
 }

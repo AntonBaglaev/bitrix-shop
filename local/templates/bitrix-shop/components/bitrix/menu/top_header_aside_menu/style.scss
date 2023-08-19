@@ -6,6 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   i {
     width: 55px;
     height: 55px;
@@ -15,8 +16,10 @@
     align-items: center;
     background: #1c1c1c;
   }
+
   span {
     padding-left: 18px;
+
     img {
       width: 100px;
     }
@@ -24,5 +27,21 @@
 }
 
 .top_header_aside_menu_panel {
-  display: none;
+  //display: none;
+  width: 300px;
+  background: #ffffff;
+  position: fixed;
+  top: 0;
+  left: -300px;
+  z-index: 500;
+  padding: 100px 30px 30px 30px;
+  border-radius: 0 0 30px 0;
+  ul {
+    li {
+      a {}
+    }
+  }
+  &_show {
+    left: 0;
+  }
 }

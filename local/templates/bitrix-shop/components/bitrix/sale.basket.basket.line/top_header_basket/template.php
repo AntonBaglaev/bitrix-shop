@@ -12,8 +12,7 @@ if ($arParams['POSITION_FIXED'] == 'Y') {
 	$cartStyle .= "-fixed {$arParams['POSITION_HORIZONTAL']} {$arParams['POSITION_VERTICAL']}";
 	if ($arParams['SHOW_PRODUCTS'] == 'Y')
 		$cartStyle .= ' bx-closed';
-}
-else
+} else
 {
 	$cartStyle .= ' bx-opener';
 }

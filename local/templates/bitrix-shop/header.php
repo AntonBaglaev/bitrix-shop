@@ -49,21 +49,25 @@ $CurUri = $APPLICATION->GetCurUri();
         <div class="top_header_content">
 
             <?// Меню - http://dev.1c-bitrix.ru/user_help/settings/settings/components_2/navigation/menu.php
-            $APPLICATION->IncludeComponent("bitrix:menu", "top_header_aside_menu", Array(
-                "ROOT_MENU_TYPE" => "main",	// Тип меню для первого уровня
-                    "MENU_CACHE_TYPE" => "A",	// Тип кеширования
-                    "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
-                    "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
-                    "MENU_CACHE_GET_VARS" => "",	// Значимые переменные запроса
-                    "MAX_LEVEL" => "2",	// Уровень вложенности меню
-                    "CHILD_MENU_TYPE" => "top_catalog",	// Тип меню для остальных уровней
-                    "USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
-                    "DELAY" => "N",	// Откладывать выполнение шаблона меню
-                    "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
-                    "COMPONENT_TEMPLATE" => "top_header_catalog_nav"
-                ),
-                false
-            ); ?>
+            $APPLICATION->IncludeComponent(
+	"bitrix:menu", 
+	"top_header_aside_menu", 
+	array(
+		"ROOT_MENU_TYPE" => "main",
+		"MENU_CACHE_TYPE" => "A",
+		"MENU_CACHE_TIME" => "3600",
+		"MENU_CACHE_USE_GROUPS" => "Y",
+		"MENU_CACHE_GET_VARS" => array(
+		),
+		"MAX_LEVEL" => "2",
+		"CHILD_MENU_TYPE" => "top_catalog",
+		"USE_EXT" => "N",
+		"DELAY" => "N",
+		"ALLOW_MULTI_SELECT" => "N",
+		"COMPONENT_TEMPLATE" => "top_header_aside_menu"
+	),
+	false
+); ?>
 
 
             <?// Меню - http://dev.1c-bitrix.ru/user_help/settings/settings/components_2/navigation/menu.php
@@ -107,7 +111,9 @@ $CurUri = $APPLICATION->GetCurUri();
 );?>
             <div class="top_header_content_phone">
                 <a href="tel:89000000000" rel="nofollow">+7 900 000 00 00</a>
-                <button type="button" class="top_header_content_phone_button"></button>
+                <button type="button" class="top_header_content_phone_button">
+                    Перезвоните мне
+                </button>
             </div>
             <div class="top_header_content_user">
                 <a href="" class="top_header_content_user_auth">

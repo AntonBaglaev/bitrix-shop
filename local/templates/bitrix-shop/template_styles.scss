@@ -23,6 +23,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     &_phone {
       display: flex;
 
@@ -33,17 +34,23 @@ body {
 
       button {
         background: none;
-        color: #888888;
+        color: #ccc;
         padding: 0;
         border: none;
       }
     }
+
     &_user {
       display: flex;
+      width: 90px;
+      justify-content: space-between;
+      margin-left: 20px;
       a {
         color: #ffffff;
         text-decoration: none;
-        i {}
+
+        i {
+        }
       }
     }
   }
