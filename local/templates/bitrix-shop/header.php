@@ -157,4 +157,38 @@ $CurUri = $APPLICATION->GetCurUri();
 </div>
 
 
+<?
+if ($CurDir === '/') {
+    $APPLICATION->IncludeComponent(
+    "bitrix:news.line",
+    "slider_main",
+    Array(
+        "ACTIVE_DATE_FORMAT" => "d.m.Y",
+        "CACHE_GROUPS" => "Y",
+        "CACHE_NOTES" => "",
+        "CACHE_TIME" => "300",
+        "CACHE_TYPE" => "A",
+        "COMPONENT_TEMPLATE" => ".default",
+        "DETAIL_URL" => "",
+        "FIELD_CODE" => array(0=>"NAME",1=>"PREVIEW_TEXT",2=>"PREVIEW_PICTURE",3=>"DETAIL_TEXT",4=>"",),
+        "IBLOCKS" => array(0=>"17",),
+        "IBLOCK_TYPE" => "sale",
+        "NEWS_COUNT" => "20",
+        "SORT_BY1" => "ACTIVE_FROM",
+        "SORT_BY2" => "SORT",
+        "SORT_ORDER1" => "DESC",
+        "SORT_ORDER2" => "ASC"
+    )
+);
+
+} else {
+    ?>
+        заголовок сайта
+    <?
+}?>
+
+<div class="container">
+
+
+
 
