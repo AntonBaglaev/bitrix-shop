@@ -107,10 +107,15 @@ endif;
 <?foreach ($arResult["SHOW_FIELDS"] as $FIELD):?>
     <div>
 
-		<?=GetMessage("REGISTER_FIELD_".$FIELD)?>:
-        <?if ($arResult["REQUIRED_FIELDS_FLAGS"][$FIELD] == "Y"): ?>
-            <span class="starrequired">*</span>
-        <? endif ?>
+
+        <? if ($FIELD !== 'LOGIN') { ?>
+            <label>
+                <?= GetMessage("REGISTER_FIELD_" . $FIELD) ?>:
+                <? if ($arResult["REQUIRED_FIELDS_FLAGS"][$FIELD] == "Y"): ?>
+                    <span>*</span>
+                <? endif ?>
+            </label>
+        <? } ?>
 
 
         <?
@@ -126,10 +131,21 @@ endif;
 
 
 
-		default: ?>
 
-        <input size="30" type="text" name="REGISTER[<?=$FIELD?>]"
-               value="<?=$arResult["VALUES"][$FIELD]?>" />
+            default: ?>
+
+
+            <? if ($FIELD == 'EMAIL') { ?>
+                <input class="form-control" size="30" type="email" name="REGISTER[<?= $FIELD ?>]"
+                       onkeyup="document.getElementById('login-field').value = this.value"
+                       value="<?= $arResult["VALUES"][$FIELD] ?>"/>
+            <? } elseif ($FIELD == 'LOGIN') { // Скрываем поле LOGIN ?>
+                <input id="login-field" size="30" type="text" style="display:none" name="REGISTER[<?= $FIELD ?>]"
+                       value="<?= $arResult["VALUES"][$FIELD] ?>"/>
+            <? } else { ?>
+                <input class="form-control" size="30" type="text" name="REGISTER[<?= $FIELD ?>]"
+                       value="<?= $arResult["VALUES"][$FIELD] ?>"/>
+            <? } ?>
 
         <?
 	}?>
