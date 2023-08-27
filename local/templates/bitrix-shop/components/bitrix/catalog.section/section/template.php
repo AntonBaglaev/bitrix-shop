@@ -120,38 +120,25 @@ $containerName = 'container-'.$navParams['NavNum'];
 $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_THEME'] : '';
 
 ?>
-<div class="row<?=$themeClass?>"> <? // wrapper ?>
-	<div class="col">
+<div <? // wrapper ?>
+
 	<?
 	//region Pagination
 	if ($showTopPager)
 	{
 		?>
-		<div class="row mb-4">
-			<div class="col text-center" data-pagination-num="<?=$navParams['NavNum']?>">
+			<div  data-pagination-num="<?=$navParams['NavNum']?>">
 				<!-- pagination-container -->
 				<?=$arResult['NAV_STRING']?>
 				<!-- pagination-container -->
 			</div>
-		</div>
+
 		<?
 	}
 	//endregion
 
-	//region Description
-	if (($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y') && !empty($arResult['DESCRIPTION']))
-	{
-		?>
-		<div class="row mb-4">
-			<div class="col catalog-section-description">
-				<p><?=$arResult['DESCRIPTION']?></p>
-			</div>
-		</div>
-		<?
-	}
-	//endregion
 	?>
-		<div class="mb-4 catalog-section" data-entity="<?=$containerName?>">
+		<div data-entity="<?=$containerName?>">
 			<!-- items-container -->
 			<?
 			if (!empty($arResult['ITEMS']) && !empty($arResult['ITEM_ROWS']))
@@ -471,11 +458,11 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 								foreach ($rowItems as $item)
 								{
 									?>
-									<div class="col-6 col-sm-4 col-md-4 col-lg-2 product-item-small-card">
+
 										<?
 										$APPLICATION->IncludeComponent(
 											'bitrix:catalog.item',
-											'bootstrap_v4',
+											'card',
 											array(
 												'RESULT' => array(
 													'ITEM' => $item,
@@ -492,7 +479,7 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 											array('HIDE_ICONS' => 'Y')
 										);
 										?>
-									</div>
+
 									<?
 								}
 
