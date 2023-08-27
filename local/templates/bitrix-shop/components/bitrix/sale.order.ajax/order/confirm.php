@@ -123,7 +123,7 @@ if ($arParams["SET_TITLE"] == "Y")
             "LOGIN" => $arUser['EMAIL']
         );
         $USER_UPD->Update($arResult["ORDER"]['USER_ID'], $fields);
-        
+
 
 	?>
 
