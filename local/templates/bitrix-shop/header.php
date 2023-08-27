@@ -140,14 +140,15 @@ $CurUri = $APPLICATION->GetCurUri();
 		"SHOW_REGISTRATION" => "N",
 		"PATH_TO_REGISTER" => "",
 		"PATH_TO_PROFILE" => SITE_DIR."personal/",
-		"SHOW_PRODUCTS" => "Y",
+		"SHOW_PRODUCTS" => "N",
 		"SHOW_DELAY" => "N",
 		"SHOW_NOTAVAIL" => "N",
 		"SHOW_IMAGE" => "Y",
 		"SHOW_PRICE" => "Y",
 		"SHOW_SUMMARY" => "Y",
 		"POSITION_FIXED" => "N",
-		"HIDE_ON_BASKET_PAGES" => "N"
+		"HIDE_ON_BASKET_PAGES" => "N",
+		"MAX_IMAGE_SIZE" => "70"
 	),
 	false
 );?>
