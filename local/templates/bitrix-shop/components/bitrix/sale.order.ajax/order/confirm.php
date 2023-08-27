@@ -112,6 +112,19 @@ if ($arParams["SET_TITLE"] == "Y")
 		<br /><strong><?=$arParams['MESS_PAY_SYSTEM_PAYABLE_ERROR']?></strong>
 		<?
 	}
+
+
+
+        $USER_UPD = new CUser;
+        $rsUser = CUser::GetByID($arResult["ORDER"]['USER_ID']);
+        $arUser = $rsUser->Fetch();
+        $fields = array(
+            "EMAIL" => $arUser['EMAIL'],
+            "LOGIN" => $arUser['EMAIL']
+        );
+        $USER_UPD->Update($arResult["ORDER"]['USER_ID'], $fields);
+        
+
 	?>
 
 <? else: ?>
