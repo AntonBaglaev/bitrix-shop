@@ -13,10 +13,12 @@ $CurUri = $APPLICATION->GetCurUri();
      Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/fonts/Roboto/stylesheet.min.css');
      Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/fonts/fontawesome/font-awesome.min.css'); //TODO удалить когда будут svg спрайты
      Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/js/fancy/jquery.fancybox.min.css');
+     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/js/slick_slider/slick.min.css');
     // JS
     CJSCore::Init(array("jquery3"));
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/js/fancy/jquery.fancybox.min.js');
     Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/js/myscripts.min.js');
+    Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . '/js/slick_slider/slick.min.js');
     // HEADERS
     $APPLICATION->ShowHead();
     ?>
