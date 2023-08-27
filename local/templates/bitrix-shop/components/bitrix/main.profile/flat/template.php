@@ -149,14 +149,23 @@ var cookie_prefix = '<?=$arResult["COOKIE_PREFIX"]?>';
 		<td><?=GetMessage('SECOND_NAME')?></td>
 		<td><input type="text" name="SECOND_NAME" maxlength="50" value="<?=$arResult["arUser"]["SECOND_NAME"]?>" /></td>
 	</tr>
-	<tr>
+
+
+
+	<tr style="display:none; position:absolute; left: -999999px;">
 		<td><?=GetMessage('LOGIN')?><span class="starrequired">*</span></td>
-		<td><input type="text" name="LOGIN" maxlength="50" value="<? echo $arResult["arUser"]["LOGIN"]?>" /></td>
+		<td><input id="login-field" type="text" name="LOGIN" maxlength="50" value="<? echo $arResult["arUser"]["LOGIN"]?>" /></td>
 	</tr>
+
+
 	<tr>
 		<td><?=GetMessage('EMAIL')?><?if($arResult["EMAIL_REQUIRED"]):?><span class="starrequired">*</span><?endif?></td>
-		<td><input type="text" name="EMAIL" maxlength="50" value="<? echo $arResult["arUser"]["EMAIL"]?>" /></td>
+		<td><input onkeyup="document.getElementById('login-field').value = this.value" type="text" name="EMAIL" maxlength="50" value="<? echo $arResult["arUser"]["EMAIL"]?>" /></td>
 	</tr>
+
+
+
+
 <?if($arResult["PHONE_REGISTRATION"]):?>
 	<tr>
 		<td><?echo GetMessage("main_profile_phone_number")?><?if($arResult["PHONE_REQUIRED"]):?><span class="starrequired">*</span><?endif?></td>
