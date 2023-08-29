@@ -358,3 +358,43 @@
 		}
 	};
 })();
+
+
+
+$(document).ready(function () {
+	$('.catalog_items_carusel').slick({
+		dots: true,
+		infinite: true,
+		speed: 600,
+		slidesToShow: 5,
+		slidesToScroll: 1,
+		autoplay: true,
+		zIndex: 2000,
+		autoplaySpeed: 5000,
+		responsive: [
+			{
+				breakpoint: 1200,
+				settings: {
+					slidesToShow: 4,
+					slidesToScroll: 2,
+					infinite: true,
+					dots: true
+				}
+			},
+			{
+				breakpoint: 962,
+				settings: {
+					slidesToShow: 3,
+					slidesToScroll: 1
+				}
+			},
+			{
+				breakpoint: 768,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2
+				}
+			}
+		]
+	});
+});

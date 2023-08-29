@@ -201,12 +201,14 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 						),
 					];
 				}
-
+                ?>
+                <div class="catalog_items_carusel" data-entity="items-row">
+                <?
 				foreach ($arResult['ITEM_ROWS'] as $rowData)
 				{
 					$rowItems = array_splice($arResult['ITEMS'], 0, $rowData['COUNT']);
 					?>
-					<div data-entity="items-row">
+
 						<?
 						switch ($rowData['VARIANT'])
 						{
@@ -455,10 +457,13 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 								break;
 
 							case 6:
+                                ?>
+
+							    <?
 								foreach ($rowItems as $item)
 								{
-									?>
-
+									    ?>
+                                <div class="catalog_items_carusel_item">
 										<?
 										$APPLICATION->IncludeComponent(
 											'bitrix:catalog.item',
@@ -479,9 +484,13 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 											array('HIDE_ICONS' => 'Y')
 										);
 										?>
-
+                                </div>
 									<?
-								}
+								};
+                                ?>
+
+
+                                <?
 
 								break;
 
@@ -641,9 +650,12 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 								break;
 						}
 						?>
-					</div>
+
 					<?
 				}
+                ?>
+                </div>
+                <?
 				unset($rowItems);
 
 				unset($itemParameters);
