@@ -186,11 +186,25 @@ if ($CurDir === '/') {
 
 } else {
     ?>
-        заголовок сайта
+        
     <?
 }?>
 
 <div class="container">
+
+    <?// Навигационная цепочка - http://dev.1c-bitrix.ru/user_help/settings/settings/components_2/navigation/breadcrumb.php
+    $APPLICATION->IncludeComponent(
+        "bitrix:breadcrumb",
+        ".default",
+        array(
+            // region Дополнительные настройки
+            "START_FROM"  =>  "0",  // Номер пункта, начиная с которого будет построена навигационная цепочка
+            "PATH"        =>  "",   // Путь, для которого будет построена навигационная цепочка (по умолчанию, текущий путь)
+            "SITE_ID"     =>  "-",  // Cайт (устанавливается в случае многосайтовой версии, когда DOCUMENT_ROOT у сайтов разный) : array ( '-' => '', 's1' => '[s1] Интернет-магазин (Сайт по умолчанию)', )
+            // endregion
+        )
+    );?>
+    <h1><?$APPLICATION->ShowTitle(false);?></h1>
 
 
 
