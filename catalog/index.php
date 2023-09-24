@@ -1,7 +1,9 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог");
-?><?$APPLICATION->IncludeComponent(
+?>
+
+<?php $APPLICATION->IncludeComponent(
 	"bitrix:catalog", 
 	"catalog", 
 	array(
@@ -27,10 +29,9 @@ $APPLICATION->SetTitle("Каталог");
 		"CONVERT_CURRENCY" => "N",
 		"DETAIL_ADD_DETAIL_TO_SLIDER" => "Y",
 		"DETAIL_ADD_TO_BASKET_ACTION" => array(
-			0 => "BUY",
+			0 => "ADD",
 		),
 		"DETAIL_ADD_TO_BASKET_ACTION_PRIMARY" => array(
-			0 => "BUY",
 		),
 		"DETAIL_BACKGROUND_IMAGE" => "-",
 		"DETAIL_BRAND_USE" => "N",
@@ -54,7 +55,7 @@ $APPLICATION->SetTitle("Каталог");
 		),
 		"DETAIL_PRODUCT_INFO_BLOCK_ORDER" => "sku,props",
 		"DETAIL_PRODUCT_PAY_BLOCK_ORDER" => "rating,price,priceRanges,quantityLimit,quantity,buttons",
-		"DETAIL_SET_CANONICAL_URL" => "Y",
+		"DETAIL_SET_CANONICAL_URL" => "N",
 		"DETAIL_SET_VIEWED_IN_COMPONENT" => "N",
 		"DETAIL_SHOW_POPULAR" => "Y",
 		"DETAIL_SHOW_SLIDER" => "Y",
@@ -111,7 +112,7 @@ $APPLICATION->SetTitle("Каталог");
 			1 => "",
 		),
 		"LIST_PRODUCT_BLOCKS_ORDER" => "price,props,sku,quantityLimit,quantity,buttons",
-		"LIST_PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'3','BIG_DATA':false},{'VARIANT':'3','BIG_DATA':false},{'VARIANT':'3','BIG_DATA':false},{'VARIANT':'3','BIG_DATA':false}]",
+		"LIST_PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'3','BIG_DATA':false},{'VARIANT':'3','BIG_DATA':false},{'VARIANT':'3','BIG_DATA':false}]",
 		"LIST_SHOW_SLIDER" => "Y",
 		"LIST_SLIDER_INTERVAL" => "3000",
 		"LIST_SLIDER_PROGRESS" => "N",
@@ -141,7 +142,7 @@ $APPLICATION->SetTitle("Каталог");
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => "round",
 		"PAGER_TITLE" => "Товары",
-		"PAGE_ELEMENT_COUNT" => "16",
+		"PAGE_ELEMENT_COUNT" => "12",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRICE_CODE" => array(
 			0 => "BASE",
@@ -234,8 +235,8 @@ $APPLICATION->SetTitle("Каталог");
 		"LABEL_PROP_POSITION" => "top-right",
 		"SEF_URL_TEMPLATES" => array(
 			"sections" => "",
-			"section" => "#SECTION_CODE_PATH#/",
-			"element" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
+			"section" => "#SECTION_CODE_PATH#",
+			"element" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#",
 			"compare" => "compare.php?action=#ACTION_CODE#",
 			"smart_filter" => "#SECTION_ID#/filter/#SMART_FILTER_PATH#/apply/",
 		),
@@ -246,4 +247,6 @@ $APPLICATION->SetTitle("Каталог");
 		)
 	),
 	false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?>
+
+<?php require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
