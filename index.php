@@ -148,14 +148,15 @@ $APPLICATION->IncludeComponent("bitrix:catalog.section.list", "main_page_section
 		"SHOW_MAX_QUANTITY" => "N",
 		"SHOW_OLD_PRICE" => "N",
 		"SHOW_PRICE_COUNT" => "1",
-		"SHOW_SLIDER" => "Y",
+		"SHOW_SLIDER" => "N",
 		"SLIDER_INTERVAL" => "3000",
 		"SLIDER_PROGRESS" => "N",
 		"TEMPLATE_THEME" => "blue",
 		"USE_ENHANCED_ECOMMERCE" => "N",
 		"USE_MAIN_ELEMENT_SECTION" => "N",
 		"USE_PRICE_COUNT" => "N",
-		"USE_PRODUCT_QUANTITY" => "N"
+		"USE_PRODUCT_QUANTITY" => "N",
+		"SHOW_AS_CARUSEL" => "Y"
 	),
 	false
 );?>

@@ -201,8 +201,17 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 						),
 					];
 				}
+
+//                echo '<pre>';
+//                print_r($arParams['SHOW_AS_CARUSEL']);
+//                echo '</pre>';
+
+                if ($arParams['SHOW_AS_CARUSEL'] === 'Y') {
+                    $styleBlock = 'catalog_items_carusel';
+                }else
+                    $styleBlock = 'row';
                 ?>
-                <div class="catalog_items_carusel" data-entity="items-row">
+                <div class="<?=$styleBlock?>" data-entity="items-row">
                 <?
 				foreach ($arResult['ITEM_ROWS'] as $rowData)
 				{
@@ -304,7 +313,7 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 								foreach ($rowItems as $item)
 								{
 									?>
-									<div class="col-6 col-md-3 product-item-small-card">
+									<div class="col-lg-3">
 										<?
 										$APPLICATION->IncludeComponent(
 											'bitrix:catalog.item',

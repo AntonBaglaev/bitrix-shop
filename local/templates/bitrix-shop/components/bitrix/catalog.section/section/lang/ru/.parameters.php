@@ -108,3 +108,4 @@ $MESS["USE_ENHANCED_ECOMMERCE_TIP"] = "Требуется дополнитель
 Ecommerce и/или Яндекс.Метрике";
 $MESS["CP_BCS_TPL_DATA_LAYER_NAME"] = "Имя контейнера данных";
 $MESS["CP_BCS_TPL_BRAND_PROPERTY"] = "Свойство брендов";
+$MESS["CP_BCS_TPL_IS_CARUSEL_SLIK"] = "Это карусель?";

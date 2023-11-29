@@ -96,6 +96,10 @@ $arTemplateParameters['ENLARGE_PRODUCT'] = array(
 	)
 );
 
+
+
+
+
 $arTemplateParameters['PRODUCT_BLOCKS_ORDER'] = array(
 	'PARENT' => 'VISUAL',
 	'NAME' => GetMessage('CP_BCS_TPL_PRODUCT_BLOCKS_ORDER'),
@@ -120,6 +124,15 @@ $arTemplateParameters['SHOW_SLIDER'] = array(
 	'MULTIPLE' => 'N',
 	'REFRESH' => 'Y',
 	'DEFAULT' => 'Y'
+);
+
+$arTemplateParameters['SHOW_AS_CARUSEL'] = array(
+    'PARENT' => 'VISUAL',
+    'NAME' => GetMessage('CP_BCS_TPL_IS_CARUSEL_SLIK'),
+    'TYPE' => 'CHECKBOX',
+    'MULTIPLE' => 'N',
+    'REFRESH' => 'Y',
+    'DEFAULT' => 'N'
 );
 
 if (isset($arCurrentValues['SHOW_SLIDER']) && $arCurrentValues['SHOW_SLIDER'] === 'Y')
