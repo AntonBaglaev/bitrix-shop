@@ -1,7 +1,11 @@
 :root {
-  --c1: #262a30;
-  --c2: #fcfbf8;
+  --c1: #000000;
+  --c2: #464646;
+  --c3: #3862ED;
 
+  --animation1: all .15s ease-out;
+  --radius1: 0px;
+  --shadow1: 0px 2px 16px 0px rgba(34, 60, 80, 0.2);
 }
 
 body {
@@ -13,45 +17,36 @@ body {
 
 
 .top_header {
-  //position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  background: var(--c1);
+  background: #fff;
+  border-bottom: 1px #ddd solid;
+
 
   &_content {
+    height: 45px;
     display: flex;
+    align-content: center;
     justify-content: space-between;
-    align-items: center;
+  }
 
-    &_phone {
-      display: flex;
+  // bitrix:menu in top_header_menu
+}
 
-      a {
-        color: #ffffff;
-        text-decoration: none;
-      }
+.geo_position_set_city {
+  // делаем свой компонент
+  display: flex;
+  align-items: center;
+  svg {
+    width: 13px;
+    height: 16px;
+  }
 
-      button {
-        background: none;
-        color: #ccc;
-        padding: 0;
-        border: none;
-      }
-    }
+  button {
+    background: none;
+    padding: 0;
+    border: none;
+    color: var(--c3);
+  }
 
-    &_user {
-      display: flex;
-      width: 90px;
-      justify-content: space-between;
-      margin-left: 20px;
-      a {
-        color: #ffffff;
-        text-decoration: none;
-
-        i {
-        }
-      }
-    }
+  span {
   }
 }

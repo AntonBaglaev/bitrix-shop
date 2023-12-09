@@ -1,0 +1,16 @@
+.top_header_menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+.top_header_menu li {
+  padding: 0px 15px;
+}
+.top_header_menu li a {
+  color: var(--c1);
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,6 +1,10 @@
 :root {
-  --c1: #262a30;
-  --c2: #fcfbf8;
+  --c1: #000000;
+  --c2: #464646;
+  --c3: #3862ED;
+  --animation1: all .15s ease-out;
+  --radius1: 0px;
+  --shadow1: 0px 2px 16px 0px rgba(34, 60, 80, 0.2);
 }
 
 body {
@@ -11,38 +15,29 @@ body {
 }
 
 .top_header {
-  width: 100%;
-  top: 0;
-  left: 0;
-  background: var(--c1);
+  background: #fff;
+  border-bottom: 1px #ddd solid;
 }
 .top_header_content {
+  height: 45px;
   display: flex;
+  align-content: center;
   justify-content: space-between;
+}
+
+.geo_position_set_city {
+  display: flex;
   align-items: center;
 }
-.top_header_content_phone {
-  display: flex;
+.geo_position_set_city svg {
+  width: 13px;
+  height: 16px;
 }
-.top_header_content_phone a {
-  color: #ffffff;
-  text-decoration: none;
-}
-.top_header_content_phone button {
+.geo_position_set_city button {
   background: none;
-  color: #ccc;
   padding: 0;
   border: none;
-}
-.top_header_content_user {
-  display: flex;
-  width: 90px;
-  justify-content: space-between;
-  margin-left: 20px;
-}
-.top_header_content_user a {
-  color: #ffffff;
-  text-decoration: none;
+  color: var(--c3);
 }
 
 /*# sourceMappingURL=template_styles.css.map */

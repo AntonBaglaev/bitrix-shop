@@ -11,7 +11,7 @@ $CurUri = $APPLICATION->GetCurUri();
      // CSS;
      Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/bootstrap.min.css');
      Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/fonts/Roboto/stylesheet.min.css');
-     Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/fonts/fontawesome/font-awesome.min.css'); //TODO удалить когда будут svg спрайты
+     //Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/fonts/fontawesome/font-awesome.min.css'); //TODO удалить когда будут svg спрайты
      Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/js/fancy/jquery.fancybox.min.css');
      Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/js/slick_slider/slick.min.css');
     // JS
@@ -40,12 +40,47 @@ $CurUri = $APPLICATION->GetCurUri();
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/local/ico/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <title><? $APPLICATION->ShowTitle() ?></title>
+    <title><?php $APPLICATION->ShowTitle() ?></title>
 </head>
 <body>
-<?$APPLICATION->ShowPanel();?>
+<?php $APPLICATION->ShowPanel();?>
 
 
+
+<div class="top_header">
+    <div class="container">
+        <div class="top_header_content">
+            <div class="geo_position_set_city">
+                <svg class="icon">
+                    <use xlink:href="#geo"></use>
+                </svg>
+                <button type="button">
+                    Санкт-Петербург <span>- изменить</span>
+                </button>
+            </div>
+            <?php // Меню - http://dev.1c-bitrix.ru/user_help/settings/settings/components_2/navigation/menu.php
+                $APPLICATION->IncludeComponent("bitrix:menu", "top_header_menu", Array(
+                    "ROOT_MENU_TYPE" => "main",	// Тип меню для первого уровня
+                    "MENU_CACHE_TYPE" => "A",	// Тип кеширования
+                    "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
+                    "MENU_CACHE_USE_GROUPS" => "Y",	// Учитывать права доступа
+                    "MENU_CACHE_GET_VARS" => "",	// Значимые переменные запроса
+                    "MAX_LEVEL" => "1",	// Уровень вложенности меню
+                    "CHILD_MENU_TYPE" => "",	// Тип меню для остальных уровней
+                    "USE_EXT" => "N",	// Подключать файлы с именами вида .тип_меню.menu_ext.php
+                    "DELAY" => "N",	// Откладывать выполнение шаблона меню
+                    "ALLOW_MULTI_SELECT" => "N",	// Разрешить несколько активных пунктов одновременно
+                    "COMPONENT_TEMPLATE" => ".default"
+	),
+	false
+); ?>
+        </div>
+    </div>
+</div>
+
+
+
+<?php /*
 <div class="top_header">
     <div class="container">
         <div class="top_header_content">
@@ -205,7 +240,7 @@ if ($CurDir === '/') {
         )
     );?>
     <h1><?$APPLICATION->ShowTitle(false);?></h1>
-
+*/ ?>
 
 
 

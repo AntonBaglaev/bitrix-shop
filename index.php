@@ -1,9 +1,9 @@
-<?
+<?php
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("");
 ?>
 
-
+<?php /*
 <?// Структура разделов
 $APPLICATION->IncludeComponent("bitrix:catalog.section.list", "main_page_sections", Array(
 	"IBLOCK_TYPE" => "catalog",	// Тип инфоблока
@@ -222,5 +222,5 @@ $APPLICATION->IncludeComponent("bitrix:catalog.section.list", "main_page_section
 		"STRICT_SECTION_CHECK" => "N",	// Строгая проверка раздела для показа списка
 	),
 	false
-);?>
-</div><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+); */ ?>
+</div><?php require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
