@@ -6,11 +6,30 @@
   align-items: center;
 }
 .top_header_menu li {
-  padding: 0px 15px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.top_header_menu li:before {
+  display: block;
+  content: "";
+  height: 15px;
+  width: 1px;
+  background: #ddd;
 }
 .top_header_menu li a {
+  display: block;
+  padding: 0px 15px;
   color: var(--c1);
   text-decoration: none;
+  font-size: 13px;
+  transition: var(--animation1);
+}
+.top_header_menu li a:hover {
+  color: var(--c3);
+}
+.top_header_menu li:first-child:before {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

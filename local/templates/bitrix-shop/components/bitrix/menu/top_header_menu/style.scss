@@ -6,11 +6,31 @@
 		display: flex;
 		align-items: center;
 		li {
-			padding: 0px 15px;
+			display: flex;
+			align-items: center;
+			position: relative;
+			&:before {
+				display: block;
+				content: '';
+				height: 15px;
+				width: 1px;
+				background: #ddd;
+			}
 			a {
+				display: block;
+				padding: 0px 15px;
 				color: var(--c1);
 				text-decoration: none;
-
+				font-size: 13px;
+				transition: var(--animation1);
+				&:hover {
+					color: var(--c3);
+				}
+			}
+			&:first-child {
+				&:before {
+					display: none;
+				}
 			}
 		}
 

@@ -32,11 +32,15 @@ body {
 .geo_position_set_city svg {
   width: 13px;
   height: 16px;
+  margin-right: 5px;
 }
 .geo_position_set_city button {
   background: none;
   padding: 0;
   border: none;
+  font-size: 13px;
+}
+.geo_position_set_city span {
   color: var(--c3);
 }
 

@@ -38,15 +38,17 @@ body {
   svg {
     width: 13px;
     height: 16px;
+    margin-right: 5px;
   }
 
   button {
     background: none;
     padding: 0;
     border: none;
-    color: var(--c3);
+    font-size: 13px;
   }
 
   span {
+    color: var(--c3);
   }
 }
