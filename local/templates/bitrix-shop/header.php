@@ -58,8 +58,7 @@ $CurUri = $APPLICATION->GetCurUri();
                     Санкт-Петербург <span>- изменить</span>
                 </button>
             </div>
-            <?php // Меню - http://dev.1c-bitrix.ru/user_help/settings/settings/components_2/navigation/menu.php
-                $APPLICATION->IncludeComponent("bitrix:menu", "top_header_menu", Array(
+            <?php $APPLICATION->IncludeComponent("bitrix:menu", "top_header_menu", Array(
                     "ROOT_MENU_TYPE" => "main",	// Тип меню для первого уровня
                     "MENU_CACHE_TYPE" => "A",	// Тип кеширования
                     "MENU_CACHE_TIME" => "3600",	// Время кеширования (сек.)
@@ -79,6 +78,45 @@ $CurUri = $APPLICATION->GetCurUri();
 </div>
 
 
+<header class="container">
+    <div class="row">
+        <div class="col-xl-3">
+            <a href="/" title="">
+                <img src="<?=SITE_TEMPLATE_PATH?>/img/logo_header.svg" alt="">
+            </a>
+        </div>
+        <div class="col-xl-9">
+            <?php $APPLICATION->IncludeComponent(
+                "bitrix:search.title",
+                "top_header_search",
+            Array(
+                "NUM_CATEGORIES" => "1",
+                "TOP_COUNT" => "5",
+                "ORDER" => "date",
+                "USE_LANGUAGE_GUESS" => "Y",
+                "CHECK_DATES" => "N",
+                "SHOW_OTHERS" => "N",
+                "PAGE" => "#SITE_DIR#search/index.php",
+                "CATEGORY_0_TITLE" => "",
+                "CATEGORY_0" => array(
+                0 => "iblock_catalog",
+                ),
+                "COMPONENT_TEMPLATE" => ".default",
+                "SHOW_INPUT" => "Y",
+                "INPUT_ID" => "title-search-input",
+                "CONTAINER_ID" => "title-search",
+                "CATEGORY_0_iblock_catalog" => array(
+                0 => "15",
+                )
+            ),
+                false
+            );?>
+    <div class="header_user_links">
+        
+    </div>
+        </div>
+    </div>
+</header>
 
 <?php /*
 <div class="top_header">

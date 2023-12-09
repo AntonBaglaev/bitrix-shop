@@ -1,23 +1,23 @@
-.top_header_menu {
+.top_header_menu ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   align-items: center;
 }
-.top_header_menu li {
+.top_header_menu ul li {
   display: flex;
   align-items: center;
   position: relative;
 }
-.top_header_menu li:before {
+.top_header_menu ul li:before {
   display: block;
   content: "";
   height: 15px;
   width: 1px;
   background: #ddd;
 }
-.top_header_menu li a {
+.top_header_menu ul li a {
   display: block;
   padding: 0px 15px;
   color: var(--c1);
@@ -25,10 +25,10 @@
   font-size: 13px;
   transition: var(--animation1);
 }
-.top_header_menu li a:hover {
+.top_header_menu ul li a:hover {
   color: var(--c3);
 }
-.top_header_menu li:first-child:before {
+.top_header_menu ul li:first-child:before {
   display: none;
 }
 
