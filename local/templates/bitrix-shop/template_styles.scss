@@ -4,7 +4,7 @@
   --c3: #3862ED;
 
   --animation1: all .15s ease-out;
-  --radius1: 0px;
+  --radius1: 5px;
   --shadow1: 0px 2px 16px 0px rgba(34, 60, 80, 0.2);
 }
 
@@ -20,16 +20,112 @@ body {
   background: #fff;
   border-bottom: 1px #ddd solid;
 
-
   &_content {
     height: 45px;
     display: flex;
     align-content: center;
     justify-content: space-between;
   }
-
   // bitrix:menu in top_header_menu
 }
+
+
+
+.site_header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &_logo {
+    width: 33.3333333%;
+    img {
+    }
+  }
+
+  &_content {
+    display: flex;
+    justify-content: space-between;
+
+    &_search {
+      flex: 1;
+      // search.title in search_title
+    }
+
+    &_phone {
+      display: flex;
+      flex-direction: column;
+      padding: 0px 30px;
+
+      a {
+        color: var(--c1);
+        font-weight: bold;
+        font-size: 16px;
+        text-decoration: none;
+        transition: var(--animation1);
+        &:hover {
+          color: var(--c3);
+        }
+      }
+
+      button {
+        color: var(--c3);
+        background: none;
+        padding: 0;
+        border: none;
+        font-size: 13px;
+        text-align: left;
+      }
+    }
+
+    &_user {
+      display: flex;
+      justify-content: space-between;
+      width: 200px;
+
+      &_link {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        justify-content: center;
+        color: #666;
+        text-decoration: none;
+        transition: var(--animation1);
+        &:hover {
+          color: var(--c3);
+        }
+        svg{
+          width: 25px;
+          height: 25px;
+          display: block;
+          margin: 0 auto;
+        }
+
+        i {
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          text-align: center;
+          font-style: normal;
+          background: var(--c3);
+          color: #ffffff;
+          border-radius: 100%;
+          font-size: 12px;
+          line-height: 20px;
+          top: -7px;
+          right: 4px;
+        }
+
+        span {
+          text-align: center;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+}
+
 
 .geo_position_set_city {
   // делаем свой компонент

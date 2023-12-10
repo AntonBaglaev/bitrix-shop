@@ -1,4 +1,4 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+<?php if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -11,7 +11,7 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);?>
-<?
+<?php
 $INPUT_ID = trim($arParams["~INPUT_ID"]);
 if($INPUT_ID == '')
 	$INPUT_ID = "title-search-input";
@@ -23,21 +23,21 @@ if($CONTAINER_ID == '')
 $CONTAINER_ID = CUtil::JSEscape($CONTAINER_ID);
 
 if($arParams["SHOW_INPUT"] !== "N"):?>
-	<div id="<?echo $CONTAINER_ID?>" class="top_header_search">
-	<form action="<?echo $arResult["FORM_ACTION"]?>">
+	<div id="<?php echo $CONTAINER_ID?>" class="title_search">
+	<form action="<?php echo $arResult["FORM_ACTION"]?>">
+		<input id="<?php echo $INPUT_ID?>" type="text" name="q" value="" size="40" placeholder="Поиск по каталогу" maxlength="50" autocomplete="off" />
         <button name="s" type="submit">
-            <i class="fa fa-search"></i>
+            Найти
         </button>
-		<input id="<?echo $INPUT_ID?>" type="text" name="q" value="" size="40" placeholder="Поиск по каталогу" maxlength="50" autocomplete="off" />
-	</form>
+    </form>
 	</div>
-<?endif?>
+<?php endif?>
 <script>
 	BX.ready(function(){
 		new JCTitleSearch({
-			'AJAX_PAGE' : '<?echo CUtil::JSEscape(POST_FORM_ACTION_URI)?>',
-			'CONTAINER_ID': '<?echo $CONTAINER_ID?>',
-			'INPUT_ID': '<?echo $INPUT_ID?>',
+			'AJAX_PAGE' : '<?php echo CUtil::JSEscape(POST_FORM_ACTION_URI)?>',
+			'CONTAINER_ID': '<?php echo $CONTAINER_ID?>',
+			'INPUT_ID': '<?php echo $INPUT_ID?>',
 			'MIN_QUERY_LEN': 2
 		});
 	});

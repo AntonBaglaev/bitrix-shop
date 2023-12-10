@@ -78,42 +78,66 @@ $CurUri = $APPLICATION->GetCurUri();
 </div>
 
 
-<header class="container">
-    <div class="row">
-        <div class="col-xl-3">
-            <a href="/" title="">
+<header class="container site_header">
+
+            <a href="/" title="" class="site_header_logo">
                 <img src="<?=SITE_TEMPLATE_PATH?>/img/logo_header.svg" alt="">
             </a>
-        </div>
-        <div class="col-xl-9">
-            <?php $APPLICATION->IncludeComponent(
-                "bitrix:search.title",
-                "top_header_search",
-            Array(
-                "NUM_CATEGORIES" => "1",
-                "TOP_COUNT" => "5",
-                "ORDER" => "date",
-                "USE_LANGUAGE_GUESS" => "Y",
-                "CHECK_DATES" => "N",
-                "SHOW_OTHERS" => "N",
-                "PAGE" => "#SITE_DIR#search/index.php",
-                "CATEGORY_0_TITLE" => "",
-                "CATEGORY_0" => array(
-                0 => "iblock_catalog",
+
+        <div class="site_header_content">
+            <div class="site_header_content_search">
+                <?php $APPLICATION->IncludeComponent(
+                    "bitrix:search.title",
+                    "top_header_search",
+                Array(
+                    "NUM_CATEGORIES" => "1",
+                    "TOP_COUNT" => "5",
+                    "ORDER" => "date",
+                    "USE_LANGUAGE_GUESS" => "Y",
+                    "CHECK_DATES" => "N",
+                    "SHOW_OTHERS" => "N",
+                    "PAGE" => "#SITE_DIR#search/index.php",
+                    "CATEGORY_0_TITLE" => "",
+                    "CATEGORY_0" => array(
+                    0 => "iblock_catalog",
+                    ),
+                    "COMPONENT_TEMPLATE" => ".default",
+                    "SHOW_INPUT" => "Y",
+                    "INPUT_ID" => "title-search-input",
+                    "CONTAINER_ID" => "title-search",
+                    "CATEGORY_0_iblock_catalog" => array(
+                    0 => "15",
+                    )
                 ),
-                "COMPONENT_TEMPLATE" => ".default",
-                "SHOW_INPUT" => "Y",
-                "INPUT_ID" => "title-search-input",
-                "CONTAINER_ID" => "title-search",
-                "CATEGORY_0_iblock_catalog" => array(
-                0 => "15",
-                )
-            ),
-                false
-            );?>
-    <div class="header_user_links">
-        
-    </div>
+                    false
+                );?>
+            </div>
+            <div class="site_header_content_phone">
+                <a href="tel:8 800 961 79 93" rel="nofollow">8 800 961 79 93</a>
+                <button type="button">перезвоните мне</button>
+            </div>
+            <div class="site_header_content_user">
+                <a href="" class="site_header_content_user_link">
+                    <svg class="icon">
+                        <use xlink:href="#user"></use>
+                    </svg>
+                    <span>Кабинет</span>
+                </a>
+                <a href="" class="site_header_content_user_link">
+                    <svg class="icon">
+                        <use xlink:href="#heart"></use>
+                    </svg>
+                    <i>1</i>
+                    <span>Избранное</span>
+                </a>
+                <a href="" class="site_header_content_user_link">
+                    <svg class="icon">
+                        <use xlink:href="#cart"></use>
+                    </svg>
+                    <i>0</i>
+                    <span>Корзина</span>
+                </a>
+            </div>
         </div>
     </div>
 </header>
