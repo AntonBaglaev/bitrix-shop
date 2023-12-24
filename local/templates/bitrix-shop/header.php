@@ -1,8 +1,6 @@
 <?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $CurDir = $APPLICATION->GetCurDir();
 $CurUri = $APPLICATION->GetCurUri();
-
-
 ?>
 <!doctype html>
 <html xml:lang="<?=LANGUAGE_ID?>" lang="<?=LANGUAGE_ID?>">
@@ -145,7 +143,6 @@ $CurUri = $APPLICATION->GetCurUri();
     </div>
 </header>
 
-
         <?php $APPLICATION->IncludeComponent("bitrix:menu", "top_header_catalog", Array(
 	"ROOT_MENU_TYPE" => "top_catalog",
 		"MENU_CACHE_TYPE" => "A",
@@ -161,6 +158,47 @@ $CurUri = $APPLICATION->GetCurUri();
 	),
 	false
 ); ?>
+
+<?php
+if ($CurDir === '/') {
+    ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3">
+                    <div class="small_ads_area">
+
+                    </div>
+                </div>
+                <div class="col-xl-9">
+                    <div class="big_ads_area">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="main_page_reklama">
+        <div class="main_page_reklama_1"></div>
+        <div class="main_page_reklama_2"></div>
+    </div>
+    <?php
+} else {
+    ?>
+    <?php // Навигационная цепочка - http://dev.1c-bitrix.ru/user_help/settings/settings/components_2/navigation/breadcrumb.php
+    $APPLICATION->IncludeComponent(
+        "bitrix:breadcrumb",
+        ".default",
+        array(
+            // region Дополнительные настройки
+            "START_FROM"  =>  "0",  // Номер пункта, начиная с которого будет построена навигационная цепочка
+            "PATH"        =>  "",   // Путь, для которого будет построена навигационная цепочка (по умолчанию, текущий путь)
+            "SITE_ID"     =>  "-",  // Cайт (устанавливается в случае многосайтовой версии, когда DOCUMENT_ROOT у сайтов разный) : array ( '-' => '', 's1' => '[s1] Интернет-магазин (Сайт по умолчанию)', )
+            // endregion
+        )
+    );?>
+    <h1><?php $APPLICATION->ShowTitle(false);?></h1>
+    <?php
+} ?>
+
 
 
 <?php /*
