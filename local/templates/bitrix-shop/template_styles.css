@@ -32,11 +32,13 @@ body {
   justify-content: space-between;
 }
 .site_header_logo {
-  width: 33.3333333%;
+  width: 25%;
 }
 .site_header_content {
   display: flex;
   justify-content: space-between;
+  flex: 1;
+  padding-left: 4px;
 }
 .site_header_content_search {
   flex: 1;
