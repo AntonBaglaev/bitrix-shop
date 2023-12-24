@@ -1,13 +1,16 @@
-<? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+<?php if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $CurDir = $APPLICATION->GetCurDir();
 $CurUri = $APPLICATION->GetCurUri();
+
+
 ?>
 <!doctype html>
 <html xml:lang="<?=LANGUAGE_ID?>" lang="<?=LANGUAGE_ID?>">
 <head>
-    <?
+    <?php
 
     use Bitrix\Main\Page\Asset;
+
      // CSS;
      Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/bootstrap.min.css');
      Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . '/fonts/Roboto/stylesheet.min.css');
