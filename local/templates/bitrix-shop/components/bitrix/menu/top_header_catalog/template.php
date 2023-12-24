@@ -5,9 +5,7 @@
 <ul>
     <?php
     $previousLevel = 0;
-    foreach($arResult
-
-    as $arItem):?>
+    foreach($arResult as $arItem):?>
 
 	<?php if ($previousLevel && $arItem["DEPTH_LEVEL"] < $previousLevel):?>
 		<?=str_repeat("</ul></li>", ($previousLevel - $arItem["DEPTH_LEVEL"]));?>
@@ -16,29 +14,31 @@
 	<?php if ($arItem["IS_PARENT"]):?>
 
 		<?php if ($arItem["DEPTH_LEVEL"] == 1):?>
-			<li><a href="<?=$arItem["LINK"]?>"
-                   class="<?php if ($arItem["SELECTED"]):?>root-item-selected<?php else:?>root-item<?php endif?>"><?=$arItem["TEXT"]?></a>
+			<li  class="top_header_catalog_level_1 <?php if ($arItem["SELECTED"]):?> item-selected <?php endif?>">
+                <a href="<?=$arItem["LINK"]?>">
+                   <?=$arItem["TEXT"]?>
+                </a>
 				<ul>
 		            <?php else:?>
-                    <li<?php if ($arItem["SELECTED"]):?> class="item-selected"<?php endif?>><a href="<?=$arItem["LINK"]?>" class="parent"><?=$arItem["TEXT"]?></a>
-
+                    <li class="<?php if ($arItem["SELECTED"]):?> item-selected <?php endif?>"><a href="<?=$arItem["LINK"]?>" class="parent"><?=$arItem["TEXT"]?></a>
                     <ul>
 		            <?php endif?>
-
 	                <?php else:?>
 
 		                <?php if ($arItem["PERMISSION"] > "D"):?>
 
 			            <?php if ($arItem["DEPTH_LEVEL"] == 1):?>
-				            <li><a href="<?=$arItem["LINK"]?>"
-                                   class="<?php if ($arItem["SELECTED"]):?>root-item-selected<?php else:?>root-item<?php endif?>"><?=$arItem["TEXT"]?></a>
+				            <li class="top_header_catalog_level_1<? if ($arItem["SELECTED"]){?> root-item-selected<?}?>">
+                                <a href="<?=$arItem["LINK"] ?>">
+                                    <?=$arItem["TEXT"] ?>
+                                </a>
                             </li>
-			            <?php else:?>
+			            <?php else: ?>
 				<li<?php if ($arItem["SELECTED"]):?> class="item-selected"<?php endif?>><a
                             href="<?=$arItem["LINK"]?>"><?=$arItem["TEXT"]?></a></li>
-			<?php endif?>
+			<?php endif ?>
 
-		<?php else:?>
+		<?php else: ?>
 
 			<?php if ($arItem["DEPTH_LEVEL"] == 1):?>
 				<li><a href=""
