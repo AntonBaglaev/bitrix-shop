@@ -128,6 +128,8 @@ $APPLICATION->SetTitle("");
 	false
 );?>
 
+
+
 <?php //$APPLICATION->IncludeComponent("bitrix:news.list", "main_page_sales", Array(
 //	"ACTIVE_DATE_FORMAT" => "d.m.Y",	// Формат показа даты
 //		"ADD_SECTIONS_CHAIN" => "N",	// Включать раздел в цепочку навигации

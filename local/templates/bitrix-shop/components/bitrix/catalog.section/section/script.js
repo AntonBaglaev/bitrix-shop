@@ -367,7 +367,7 @@ $(document).ready(function () {
 		infinite: true,
 		speed: 600,
 		slidesToShow: 5,
-		slidesToScroll: 1,
+		slidesToScroll: 3,
 		autoplay: true,
 		zIndex: 2000,
 		autoplaySpeed: 5000,

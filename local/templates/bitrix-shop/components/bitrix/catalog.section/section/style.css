@@ -11,6 +11,7 @@
   background: #fff;
   border: 1px #ccc solid;
   border-radius: 100%;
+  margin: 0px 3px;
 }
 .catalog_items_carusel .slick-dots li button {
   display: none;

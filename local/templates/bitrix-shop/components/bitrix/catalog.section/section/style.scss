@@ -5,16 +5,19 @@
     padding: 0;
     display: flex;
     justify-content: center;
+
     li {
       button {
         display: none;
       }
+
 
       width: 15px;
       height: 15px;
       background: #fff;
       border: 1px #ccc solid;
       border-radius: 100%;
+      margin: 0px 3px;
       &.slick-active {
         background: var(--c3);
         border: 1px var(--c3) solid;
