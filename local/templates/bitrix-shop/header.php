@@ -199,7 +199,7 @@ if ($CurDir === '/') {
     <?php
 } ?>
 
-
+<div class="container">
 
 <?php /*
 <div class="top_header">
