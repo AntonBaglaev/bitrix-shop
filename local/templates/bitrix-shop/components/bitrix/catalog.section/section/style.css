@@ -1,3 +1,23 @@
-
+.catalog_items_carusel .slick-dots {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+.catalog_items_carusel .slick-dots li {
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  border: 1px #ccc solid;
+  border-radius: 100%;
+}
+.catalog_items_carusel .slick-dots li button {
+  display: none;
+}
+.catalog_items_carusel .slick-dots li.slick-active {
+  background: var(--c3);
+  border: 1px var(--c3) solid;
+}
 
 /*# sourceMappingURL=style.css.map */

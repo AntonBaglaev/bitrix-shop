@@ -24,16 +24,13 @@ use Bitrix\Catalog\ProductTable;
 
 $this->setFrameMode(true);
 
-if (!empty($arResult['NAV_RESULT']))
-{
+if (!empty($arResult['NAV_RESULT'])) {
 	$navParams =  array(
 		'NavPageCount' => $arResult['NAV_RESULT']->NavPageCount,
 		'NavPageNomer' => $arResult['NAV_RESULT']->NavPageNomer,
 		'NavNum' => $arResult['NAV_RESULT']->NavNum
 	);
-}
-else
-{
+} else {
 	$navParams = array(
 		'NavPageCount' => 1,
 		'NavPageNomer' => 1,
@@ -45,8 +42,7 @@ $showTopPager = false;
 $showBottomPager = false;
 $showLazyLoad = false;
 
-if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
-{
+if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1) {
 	$showTopPager = $arParams['DISPLAY_TOP_PAGER'];
 	$showBottomPager = $arParams['DISPLAY_BOTTOM_PAGER'];
 	$showLazyLoad = $arParams['LAZY_LOAD'] === 'Y' && $navParams['NavPageNomer'] != $navParams['NavPageCount'];
@@ -55,8 +51,7 @@ if ($arParams['PAGE_ELEMENT_COUNT'] > 0 && $navParams['NavPageCount'] > 1)
 $templateLibrary = array('popup', 'ajax', 'fx');
 $currencyList = '';
 
-if (!empty($arResult['CURRENCIES']))
-{
+if (!empty($arResult['CURRENCIES'])) {
 	$templateLibrary[] = 'currency';
 	$currencyList = CUtil::PhpToJSObject($arResult['CURRENCIES'], false, true, true);
 }
@@ -82,19 +77,15 @@ $positionClassMap = array(
 );
 
 $discountPositionClass = '';
-if ($arParams['SHOW_DISCOUNT_PERCENT'] === 'Y' && !empty($arParams['DISCOUNT_PERCENT_POSITION']))
-{
-	foreach (explode('-', $arParams['DISCOUNT_PERCENT_POSITION']) as $pos)
-	{
+if ($arParams['SHOW_DISCOUNT_PERCENT'] === 'Y' && !empty($arParams['DISCOUNT_PERCENT_POSITION'])) {
+	foreach (explode('-', $arParams['DISCOUNT_PERCENT_POSITION']) as $pos) {
 		$discountPositionClass .= isset($positionClassMap[$pos]) ? ' '.$positionClassMap[$pos] : '';
 	}
 }
 
 $labelPositionClass = '';
-if (!empty($arParams['LABEL_PROP_POSITION']))
-{
-	foreach (explode('-', $arParams['LABEL_PROP_POSITION']) as $pos)
-	{
+if (!empty($arParams['LABEL_PROP_POSITION'])) {
+	foreach (explode('-', $arParams['LABEL_PROP_POSITION']) as $pos) {
 		$labelPositionClass .= isset($positionClassMap[$pos]) ? ' '.$positionClassMap[$pos] : '';
 	}
 }
@@ -120,12 +111,10 @@ $containerName = 'container-'.$navParams['NavNum'];
 $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_THEME'] : '';
 
 ?>
-<div <? // wrapper ?>
 
 	<?
 	//region Pagination
-	if ($showTopPager)
-	{
+	if ($showTopPager) {
 		?>
 			<div  data-pagination-num="<?=$navParams['NavNum']?>">
 				<!-- pagination-container -->
@@ -186,8 +175,7 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 				$areaIds = [];
 				$itemParameters = [];
 
-				foreach ($arResult['ITEMS'] as $item)
-				{
+				foreach ($arResult['ITEMS'] as $item) {
 					$uniqueId = $item['ID'].'_'.md5($this->randString().$component->getAction());
 					$areaIds[$item['ID']] = $this->GetEditAreaId($uniqueId);
 					$this->AddEditAction($uniqueId, $item['EDIT_LINK'], $elementEdit);
@@ -201,113 +189,16 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 						),
 					];
 				}
-
-//                echo '<pre>';
-//                print_r($arParams['SHOW_AS_CARUSEL']);
-//                echo '</pre>';
-
-                if ($arParams['SHOW_AS_CARUSEL'] === 'Y') {
-                    $styleBlock = 'catalog_items_carusel';
-                }else
-                    $styleBlock = 'row';
                 ?>
-                <div class="<?=$styleBlock?>" data-entity="items-row">
+                <div class="row<?echo $arParams['SHOW_AS_CARUSEL'] === 'Y' ? '_items_carusel' : '' ?>" data-entity="items-row">
                 <?
-				foreach ($arResult['ITEM_ROWS'] as $rowData)
-				{
+				foreach ($arResult['ITEM_ROWS'] as $rowData) {
 					$rowItems = array_splice($arResult['ITEMS'], 0, $rowData['COUNT']);
 					?>
 
 						<?
 						switch ($rowData['VARIANT'])
 						{
-							case 0:
-								?>
-								<div class="col product-item-big-card">
-									<?
-									$item = reset($rowItems);
-									$APPLICATION->IncludeComponent(
-										'bitrix:catalog.item',
-										'bootstrap_v4',
-										array(
-											'RESULT' => array(
-												'ITEM' => $item,
-												'AREA_ID' => $areaIds[$item['ID']],
-												'TYPE' => $rowData['TYPE'],
-												'BIG_LABEL' => 'N',
-												'BIG_DISCOUNT_PERCENT' => 'N',
-												'BIG_BUTTONS' => 'N',
-												'SCALABLE' => 'N'
-											),
-											'PARAMS' => $generalParams + $itemParameters[$item['ID']],
-										),
-										$component,
-										array('HIDE_ICONS' => 'Y')
-									);
-									?>
-								</div>
-								<?
-								break;
-
-							case 1:
-								foreach ($rowItems as $item)
-								{
-									?>
-									<div class="col-6 product-item-big-card">
-										<?
-										$APPLICATION->IncludeComponent(
-											'bitrix:catalog.item',
-											'bootstrap_v4',
-											array(
-												'RESULT' => array(
-													'ITEM' => $item,
-													'AREA_ID' => $areaIds[$item['ID']],
-													'TYPE' => $rowData['TYPE'],
-													'BIG_LABEL' => 'N',
-													'BIG_DISCOUNT_PERCENT' => 'N',
-													'BIG_BUTTONS' => 'N',
-													'SCALABLE' => 'N'
-												),
-												'PARAMS' => $generalParams + $itemParameters[$item['ID']],
-											),
-											$component,
-											array('HIDE_ICONS' => 'Y')
-										);
-										?>
-									</div>
-									<?
-								}
-								break;
-
-							case 2:
-								foreach ($rowItems as $item)
-								{
-									?>
-									<div class="col-sm-4 product-item-small-card">
-										<?
-										$APPLICATION->IncludeComponent(
-											'bitrix:catalog.item',
-											'bootstrap_v4',
-											array(
-												'RESULT' => array(
-													'ITEM' => $item,
-													'AREA_ID' => $areaIds[$item['ID']],
-													'TYPE' => $rowData['TYPE'],
-													'BIG_LABEL' => 'N',
-													'BIG_DISCOUNT_PERCENT' => 'N',
-													'BIG_BUTTONS' => 'Y',
-													'SCALABLE' => 'N'
-												),
-												'PARAMS' => $generalParams + $itemParameters[$item['ID']],
-											),
-											$component,
-											array('HIDE_ICONS' => 'Y')
-										);
-										?>
-									</div>
-									<?
-								}
-								break;
 
 							case 3:
 								foreach ($rowItems as $item)
@@ -337,132 +228,6 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 									</div>
 									<?
 								}
-								break;
-
-							case 4:
-								$rowItemsCount = count($rowItems);
-								?>
-								<div class="col-sm-6 product-item-big-card">
-									<?
-									$item = array_shift($rowItems);
-									$APPLICATION->IncludeComponent(
-										'bitrix:catalog.item',
-										'bootstrap_v4',
-										array(
-											'RESULT' => array(
-												'ITEM' => $item,
-												'AREA_ID' => $areaIds[$item['ID']],
-												'TYPE' => $rowData['TYPE'],
-												'BIG_LABEL' => 'N',
-												'BIG_DISCOUNT_PERCENT' => 'N',
-												'BIG_BUTTONS' => 'Y',
-												'SCALABLE' => 'Y'
-											),
-											'PARAMS' => $generalParams + $itemParameters[$item['ID']],
-										),
-										$component,
-										array('HIDE_ICONS' => 'Y')
-									);
-									unset($item);
-									?>
-								</div>
-								<div class="col-sm-6 product-item-small-card">
-									<div class="row">
-										<?
-										for ($i = 0; $i < $rowItemsCount - 1; $i++)
-										{
-											?>
-											<div class="col-6">
-												<?
-												$APPLICATION->IncludeComponent(
-													'bitrix:catalog.item',
-													'bootstrap_v4',
-													array(
-														'RESULT' => array(
-															'ITEM' => $rowItems[$i],
-															'AREA_ID' => $areaIds[$rowItems[$i]['ID']],
-															'TYPE' => $rowData['TYPE'],
-															'BIG_LABEL' => 'N',
-															'BIG_DISCOUNT_PERCENT' => 'N',
-															'BIG_BUTTONS' => 'N',
-															'SCALABLE' => 'N'
-														),
-														'PARAMS' => $generalParams + $itemParameters[$rowItems[$i]['ID']],
-													),
-													$component,
-													array('HIDE_ICONS' => 'Y')
-												);
-												?>
-											</div>
-											<?
-										}
-										?>
-									</div>
-								</div>
-								<?
-								break;
-
-							case 5:
-								$rowItemsCount = count($rowItems);
-								?>
-								<div class="col-sm-6 col-12 product-item-small-card">
-									<div class="row">
-										<?
-										for ($i = 0; $i < $rowItemsCount - 1; $i++)
-										{
-											?>
-											<div class="col-6">
-												<?
-												$APPLICATION->IncludeComponent(
-													'bitrix:catalog.item',
-													'bootstrap_v4',
-													array(
-														'RESULT' => array(
-															'ITEM' => $rowItems[$i],
-															'AREA_ID' => $areaIds[$rowItems[$i]['ID']],
-															'TYPE' => $rowData['TYPE'],
-															'BIG_LABEL' => 'N',
-															'BIG_DISCOUNT_PERCENT' => 'N',
-															'BIG_BUTTONS' => 'N',
-															'SCALABLE' => 'N'
-														),
-														'PARAMS' => $generalParams + $itemParameters[$rowItems[$i]['ID']],
-													),
-													$component,
-													array('HIDE_ICONS' => 'Y')
-												);
-												?>
-											</div>
-											<?
-										}
-										?>
-									</div>
-								</div>
-								<div class="col-sm-6 product-item-big-card">
-									<?
-									$item = end($rowItems);
-									$APPLICATION->IncludeComponent(
-										'bitrix:catalog.item',
-										'bootstrap_v4',
-										array(
-											'RESULT' => array(
-												'ITEM' => $item,
-												'AREA_ID' => $areaIds[$item['ID']],
-												'TYPE' => $rowData['TYPE'],
-												'BIG_LABEL' => 'N',
-												'BIG_DISCOUNT_PERCENT' => 'N',
-												'BIG_BUTTONS' => 'Y',
-												'SCALABLE' => 'Y'
-											),
-											'PARAMS' => $generalParams + $itemParameters[$item['ID']],
-										),
-										$component,
-										array('HIDE_ICONS' => 'Y')
-									);
-									unset($item);
-									?>
-								</div>
-								<?
 								break;
 
 							case 6:
@@ -503,160 +268,6 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 
 								break;
 
-							case 7:
-								$rowItemsCount = count($rowItems);
-								?>
-								<div class="col-sm-6 col-12 product-item-big-card">
-									<?
-									$item = array_shift($rowItems);
-									$APPLICATION->IncludeComponent(
-										'bitrix:catalog.item',
-										'bootstrap_v4',
-										array(
-											'RESULT' => array(
-												'ITEM' => $item,
-												'AREA_ID' => $areaIds[$item['ID']],
-												'TYPE' => $rowData['TYPE'],
-												'BIG_LABEL' => 'N',
-												'BIG_DISCOUNT_PERCENT' => 'N',
-												'BIG_BUTTONS' => 'Y',
-												'SCALABLE' => 'Y'
-											),
-											'PARAMS' => $generalParams + $itemParameters[$item['ID']],
-										),
-										$component,
-										array('HIDE_ICONS' => 'Y')
-									);
-									unset($item);
-									?>
-								</div>
-								<div class="col-sm-6 col-12 product-item-small-card">
-									<div class="row">
-										<?
-										for ($i = 0; $i < $rowItemsCount - 1; $i++)
-										{
-											?>
-											<div class="col-6 col-md-4">
-												<?
-												$APPLICATION->IncludeComponent(
-													'bitrix:catalog.item',
-													'bootstrap_v4',
-													array(
-														'RESULT' => array(
-															'ITEM' => $rowItems[$i],
-															'AREA_ID' => $areaIds[$rowItems[$i]['ID']],
-															'TYPE' => $rowData['TYPE'],
-															'BIG_LABEL' => 'N',
-															'BIG_DISCOUNT_PERCENT' => 'N',
-															'BIG_BUTTONS' => 'N',
-															'SCALABLE' => 'N'
-														),
-														'PARAMS' => $generalParams + $itemParameters[$rowItems[$i]['ID']],
-													),
-													$component,
-													array('HIDE_ICONS' => 'Y')
-												);
-												?>
-											</div>
-											<?
-										}
-										?>
-									</div>
-								</div>
-								<?
-								break;
-
-							case 8:
-								$rowItemsCount = count($rowItems);
-								?>
-								<div class="col-sm-6 col-12 product-item-small-card">
-									<div class="row">
-										<?
-										for ($i = 0; $i < $rowItemsCount - 1; $i++)
-										{
-											?>
-											<div class="col-6 col-md-4">
-												<?
-												$APPLICATION->IncludeComponent(
-													'bitrix:catalog.item',
-													'bootstrap_v4',
-													array(
-														'RESULT' => array(
-															'ITEM' => $rowItems[$i],
-															'AREA_ID' => $areaIds[$rowItems[$i]['ID']],
-															'TYPE' => $rowData['TYPE'],
-															'BIG_LABEL' => 'N',
-															'BIG_DISCOUNT_PERCENT' => 'N',
-															'BIG_BUTTONS' => 'N',
-															'SCALABLE' => 'N'
-														),
-														'PARAMS' => $generalParams + $itemParameters[$rowItems[$i]['ID']],
-													),
-													$component,
-													array('HIDE_ICONS' => 'Y')
-												);
-												?>
-											</div>
-											<?
-										}
-										?>
-									</div>
-								</div>
-								<div class="col-sm-6 col-12 product-item-big-card">
-									<?
-									$item = end($rowItems);
-									$APPLICATION->IncludeComponent(
-										'bitrix:catalog.item',
-										'bootstrap_v4',
-										array(
-											'RESULT' => array(
-												'ITEM' => $item,
-												'AREA_ID' => $areaIds[$item['ID']],
-												'TYPE' => $rowData['TYPE'],
-												'BIG_LABEL' => 'N',
-												'BIG_DISCOUNT_PERCENT' => 'N',
-												'BIG_BUTTONS' => 'Y',
-												'SCALABLE' => 'Y'
-											),
-											'PARAMS' => $generalParams + $itemParameters[$item['ID']],
-										),
-										$component,
-										array('HIDE_ICONS' => 'Y')
-									);
-									unset($item);
-									?>
-								</div>
-								<?
-								break;
-
-							case 9:
-								foreach ($rowItems as $item)
-								{
-									?>
-									<div class="col product-item-line-card">
-										<? $APPLICATION->IncludeComponent(
-											'bitrix:catalog.item',
-											'bootstrap_v4',
-											array(
-												'RESULT' => array(
-													'ITEM' => $item,
-													'AREA_ID' => $areaIds[$item['ID']],
-													'TYPE' => $rowData['TYPE'],
-													'BIG_LABEL' => 'N',
-													'BIG_DISCOUNT_PERCENT' => 'N',
-													'BIG_BUTTONS' => 'N'
-												),
-												'PARAMS' => $generalParams + $itemParameters[$item['ID']],
-											),
-											$component,
-											array('HIDE_ICONS' => 'Y')
-										);
-										?>
-									</div>
-									<?
-								}
-
-								break;
 						}
 						?>
 
@@ -761,8 +372,3 @@ $themeClass = isset($arParams['TEMPLATE_THEME']) ? ' bx-'.$arParams['TEMPLATE_TH
 				container: '<?=$containerName?>'
 			});
 		</script>
-
-
-	</div>
-</div> <? //end wrapper?>
-<!-- component-end -->

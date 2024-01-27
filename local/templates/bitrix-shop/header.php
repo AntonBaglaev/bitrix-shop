@@ -176,10 +176,6 @@ if ($CurDir === '/') {
                 </div>
             </div>
         </div>
-    <div class="main_page_reklama">
-        <div class="main_page_reklama_1"></div>
-        <div class="main_page_reklama_2"></div>
-    </div>
     <?php
 } else {
     ?>
