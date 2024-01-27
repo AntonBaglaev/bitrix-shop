@@ -1,7 +1,12 @@
-.small_ads_area, .big_ads_area {
+.small_ads_area, .big_ads_area, .line_ads_area {
   background: #ddd;
   border-radius: var(--radius1);
   height: 400px;
+}
+
+.line_ads_area {
+  height: 150px;
+  margin: 30px 0px;
 }
 
 /*# sourceMappingURL=styles.css.map */

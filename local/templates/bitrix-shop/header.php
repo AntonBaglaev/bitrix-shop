@@ -140,7 +140,6 @@ $CurUri = $APPLICATION->GetCurUri();
                 </a>
             </div>
         </div>
-    </div>
 </header>
 
         <?php $APPLICATION->IncludeComponent("bitrix:menu", "top_header_catalog", Array(
