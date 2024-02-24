@@ -1,4 +1,4 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+<?php if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -13,15 +13,24 @@
 $this->setFrameMode(true);
 ?>
 
-<?foreach($arResult["ITEMS"] as $arItem):?>
-	<?
-	$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
-	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
-	?>
-	<p class="news-item" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-		<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" title="<?=$arItem["PREVIEW_PICTURE"]["TITLE"]?>">
-            <img src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>" alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>"/>
-            <h3><?echo $arItem["NAME"]?></h3>
-        </a>
-	</p>
-<?endforeach;?>
+    <div class="row">
+        <?php foreach($arResult["ITEMS"] as $arItem):?>
+            <?php
+            $this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
+            $this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
+            if (strlen($arItem["PREVIEW_PICTURE"]["SRC"]) > 0) {
+                $bgImage = $arItem["PREVIEW_PICTURE"]["SRC"];
+            } else {
+                $bgImage = '/local/img/nophoto.png';
+            }
+            ?>
+            <div class="col-xl-3" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
+                <a class="sales_line_item" href="<?=$arItem["DETAIL_PAGE_URL"]?>" title="<?=$arItem["PREVIEW_PICTURE"]["TITLE"]?>">
+                    <span class="sales_line_item_pict" style="background-image: url(<?=$bgImage?>)"></span>
+                    <h3><?php echo $arItem["NAME"]?></h3>
+                    <p><?php echo $arItem["PREVIEW_TEXT"]?></p>
+                    <span class="sales_line_item_more">Побробуйте бесплатно</span>
+                </a>
+            </div>
+        <?php endforeach;?>
+    </div>
